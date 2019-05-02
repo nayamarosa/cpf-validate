@@ -1,38 +1,67 @@
+function checkLength(cpfnumber){
+    return cpfnumber.toString().length === 11;
+}
+
 // function cpfValidator(cpfnumber){
-    
+
 //     function differentNumbers() {
 //         // ??
 //     }
-    
-//     function firstCodeValidate() {
-//         //somar [0]*10 + [1]*9 + [2]*8 + [3]*7 + [4]*6 + [5]*5 + [6]*4 + [7]*3 + [8]*2
-//         //multiplicar resultado por 10
-//         //dividir por 11 e pegar o módulo
-//         //módulo = primeiro digito
-//     }
-    
-//     function secondCodeValidate() {
-//         //somar [0]*11 + [1]*10 + [2]*9 + [3]*8 + [4]*7 + [5]*6 + [6]*5 + [7]*4 + [8]*3 + [9]*2
-//         //multiplicar resultado por 10
-//         //dividir por 11 e pegar o módulo
-//         //módulo = primeiro digito
-//     }
-    
-    
-// }
 
-// const transformToNumbers = (cpfnumber) => parseInt(cpfnumber, 10);
+function firstCodeValidate(cpfnumber) {
+    const nineDigits = cpfnumber.substring(0,9).split('');
+    const transformToNumbers = nineDigits.map(Number);
     
-function checkLength(cpfnumber){
-    if(cpfnumber.toString().length === 11){
-        return true;
+    let arrayToSum = [];
+    
+    for(num in transformToNumbers){
+        let multiplyNumbers = (transformToNumbers[num]) * (10 - num);
+        arrayToSum.push(multiplyNumbers);
+    }
+    
+    let allDigitsSum = arrayToSum.reduce(function(a, b) {
+        return a + b;
+    });
+    
+    let module = (allDigitsSum * 10) % 11;
+    if(module === 10){
+        return 0;
     } else {
-        return false;
+        return module;
     }
 }
 
-// transformToNumbers("1234543212");
-checkLength(12345574663);
+function secondCodeValidate(cpfnumber) {
+    const tenDigits = cpfnumber.substring(0,10).split('');
+    const transformToNumbers = tenDigits.map(Number);
+    
+    let arrayToSum = [];
+    
+    for(num in transformToNumbers){
+        let multiplyNumbers = (transformToNumbers[num]) * (11 - num);
+        arrayToSum.push(multiplyNumbers);
+    }
+    
+    let allDigitsSum = arrayToSum.reduce(function(a, b) {
+        return a + b;
+    });
+    
+    let module = (allDigitsSum * 10) % 11;
+    return module;
+}
 
-// module.exports = transformToNumbers;
+function checkCodesValidate(cpfnumber){
+    let firstNumber = firstCodeValidate(cpfnumber).toString();
+    let secondNumber = secondCodeValidate(cpfnumber).toString();
+    if(firstNumber === cpfnumber.substring(9,10) || secondNumber === cpfnumber.substring(10,11)){
+        return true;
+    } else {
+        return false
+    }
+}
+
+checkLength("73516511834")
+checkCodesValidate("73516511834")
+
+module.exports.checkCodesValidate = checkCodesValidate;
 module.exports.checkLength = checkLength;
