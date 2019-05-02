@@ -30,7 +30,7 @@ module.exports = {
             'always'
         ],
         'camelcase': 2,
-        'id-length': 2,
+        'id-length': 1,
         'keyword-spacing': 2,
         'space-infix-ops': 2,
         'comma-spacing': 2,
@@ -47,6 +47,7 @@ module.exports = {
         'object-property-newline': 2,
         'brace-style': 2,
         'eqeqeq': 2,
-        'no-array-constructor': 2
+        'no-array-constructor': 2,
+        'no-undef': 1
     }
 };
