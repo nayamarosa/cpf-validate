@@ -1,8 +1,8 @@
 module.exports = {
     'env': {
+        'browser': true,
         'commonjs': true,
-        'es6': true,
-        'node': true
+        'es6': true
     },
     'extends': 'eslint:recommended',
     'globals': {
@@ -29,25 +29,66 @@ module.exports = {
             'error',
             'always'
         ],
-        'camelcase': 2,
-        'id-length': 1,
-        'keyword-spacing': 2,
-        'space-infix-ops': 2,
-        'comma-spacing': 2,
+        'id-length': 2,
+        'camelcase': ["error", {properties: "always"}],
+        'keyword-spacing': [
+            'error', {
+            'after': true
+        }],
+        'space-infix-ops': [
+            'error', {
+            'int32Hint': false
+        }],
+        'comma-spacing': [
+            'error', {
+            'before': false,
+            'after': true
+        }],
         'space-before-blocks': 2,
-        'spaced-comment': 2,
-        'key-spacing': 2,
-        'no-multi-spaces': 2,
-        'space-in-parens': 2,
-        'space-before-function-paren': 2,
-        'func-call-spacing': 2,
-        'no-multiple-empty-lines': 2,
-        'padded-blocks': 2,
+        'spaced-comment': [
+            'error',
+            'always'
+        ],
+        'key-spacing': [
+            'error', {
+            'beforeColon': true
+        }],
+        'no-multi-spaces': [
+            'error', {
+            'ignoreEOLComments': false
+        }],
+        'space-in-parens': [
+            'error',
+            'never'
+        ],
+        'space-before-function-paren': [
+            'error',
+            'never'
+        ],
+        'func-call-spacing': [
+            'error',
+            'never'
+        ],
+        'no-multiple-empty-lines': [
+            'error', {
+            'max': 0,
+            'maxBOF': 1
+        }],
+        'padded-blocks': [
+            'error',
+            'never'
+        ],
+        'quotes': [
+            'error',
+            'single'
+        ],
         'no-floating-decimal': 2,
         'object-property-newline': 2,
         'brace-style': 2,
-        'eqeqeq': 2,
+        'eqeqeq': [
+            'error',
+            'always'
+        ],
         'no-array-constructor': 2,
-        'no-undef': 1
     }
-};
+ };
