@@ -34,5 +34,4 @@ function checkCodesValidate(cpfnumber) {
   return isFirstNumberTheSame || isSecondNumberTheSame;
 }
 
-cpfValidator('38089124801')
 module.exports.cpfValidator = cpfValidator;
